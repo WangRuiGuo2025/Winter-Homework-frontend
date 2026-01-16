@@ -6,14 +6,16 @@
   import Write from './components/Write.vue';
 
   import { Search } from '@element-plus/icons-vue';
-  import { ref, provide, onMounted} from 'vue'
+  import { ref, provide, onMounted, h} from 'vue'
+  import { ElLoading , ElNotification } from 'element-plus';
 
   const userName = ref('')
   const PageStatus = ref('Home')
   const activeIndex = ref('Home')
   const Status = ref('None')
   const SearchContent = ref('') 
-
+  const fullscreenLoading = ref(false)
+  
   //（AI帮助）
   const triggerSearch = ref(() => {})
 
@@ -32,25 +34,42 @@
     }
   }
 
+  // （AI帮助）随机数公式：Math.floor(Math.random() * (最大值 - 最小值)) + 最小值
+  const openFullScreen = () => {
+    const loading = ElLoading.service({
+      lock: true,
+      text: 'Loading',
+      background: 'rgba(0, 0, 0, 0.7)',
+    })
+    setTimeout(() => {
+      loading.close()
+    }, Math.floor(Math.random() * 250) + 100)
+  }
+
   const toLogin = () => { 
     activeIndex.value = 'Login'
     PageStatus.value = 'Login' 
+    openFullScreen()
   } 
   const toRegister = () => {
     activeIndex.value = 'Register'
     PageStatus.value = 'Register' 
+    openFullScreen()
   } 
   const toHome = () => { 
     activeIndex.value = 'Home'
     PageStatus.value = 'Home' 
+    openFullScreen()
   } 
   const toWrite = () => { 
     activeIndex.value = 'Write'
     PageStatus.value = 'Write' 
+    openFullScreen()
   } 
   const toAbout = () => { 
     activeIndex.value = 'About'
     PageStatus.value = 'About' 
+    openFullScreen()
   } 
   const loginsuccess =()=>{
     Status.value = 'success'
@@ -86,6 +105,24 @@
     sessionStorage.clear()
     window.location.reload()
   }
+
+  const Notification = () => {
+    ElNotification({
+      title: 'ⓘ 每日提醒',
+      message: h('i', { style: 'color: teal' }, (() => {
+          const currentDate = new Date();
+          const year = currentDate.getFullYear();
+          const month = String(currentDate.getMonth() + 1);
+          const day = String(currentDate.getDate());
+          return `今天是${year}年${month}月${day}日`;
+        })()
+      ),
+    });
+  };
+
+  onMounted(() => {
+    Notification()
+  })
 </script>
 
 <template>

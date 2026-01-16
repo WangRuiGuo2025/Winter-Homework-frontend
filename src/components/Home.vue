@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed, inject, watch } from 'vue'
 import axios from 'axios'
-import { ElMessage, ElPagination } from 'element-plus'
+import { ElMessage, ElPagination} from 'element-plus'
 
 const Page = ref({
     Number: 1,
@@ -17,6 +17,7 @@ const dialogVisible = ref(false)
 const currentArticle = ref(null)
 const commentContent = ref('')
 const articleComments = ref([])
+
 
 const SearchContent = inject('SearchContent', ref(''))
 const registerSearchHandler = inject('registerSearchHandler', () => {})
