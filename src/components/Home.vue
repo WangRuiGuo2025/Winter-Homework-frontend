@@ -395,7 +395,7 @@ onMounted(() => {
     }
 
     .comment-input :deep(.el-textarea__inner) {
-        color: var(--vt-c-white-mute);
+        color: var(--color-text);
         margin-bottom: 10px;
         background-color: var(--color-fff-background-soft);
     }
