@@ -30,7 +30,7 @@ const currentPageNumber = computed(() => {
 
 const Load = async () => {
     try {
-        const response = await axios.get("http://localhost:8000/articles/list")
+        const response = await axios.get("https://winter-homework-backend.onrender.com/articles/list")
         if (response.data.code === 1) {
             allArticles.value = response.data.data.list || response.data.data
             filteredArticles.value = [...allArticles.value]//（AI帮助）
@@ -81,7 +81,7 @@ const likeCountStyle = ref({
 // 加载文章评论列表
 const loadComments = async (article_id) => {
     try {
-        const res = await axios.get("http://localhost:8000/articles/comments", {
+        const res = await axios.get("https://winter-homework-backend.onrender.com/articles/comments", {
             params: { article_id: article_id }
         })
         if (res.data.code === 1) {
@@ -97,7 +97,7 @@ const loadComments = async (article_id) => {
 // 发表评论（仅登录用户可用）
 const submitComment = async () => {
     try {
-        const res = await axios.post("http://localhost:8000/articles/comment", {
+        const res = await axios.post("https://winter-homework-backend.onrender.com/articles/comment", {
             article_id: currentArticle.value.id,
             username: userName.value,
             content: commentContent.value.trim()
@@ -125,7 +125,7 @@ const openDialog = async (article) => {
 
     if (Status.value === 'success' && userName.value) {
         try {
-            const res = await axios.get("http://localhost:8000/articles/check_like", {
+            const res = await axios.get("https://winter-homework-backend.onrender.com/articles/check_like", {
                 params: {
                     article_id: article.id,
                     username: userName.value
@@ -151,7 +151,7 @@ const handleLike = async () => {
 
     try {
         if (isLiked.value) {
-            const res = await axios.delete("http://localhost:8000/articles/unlike", {
+            const res = await axios.delete("https://winter-homework-backend.onrender.com/articles/unlike", {
                 data: {
                     article_id: currentArticle.value.id,
                     username: userName.value
@@ -166,7 +166,7 @@ const handleLike = async () => {
                 ElMessage({ message: res.data.msg || "取消点赞失败", type: "error" })
             }
         } else {
-            const res = await axios.post("http://localhost:8000/articles/like", {
+            const res = await axios.post("https://winter-homework-backend.onrender.com/articles/like", {
                 article_id: currentArticle.value.id,
                 username: userName.value
             })

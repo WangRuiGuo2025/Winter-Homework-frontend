@@ -11,7 +11,7 @@ const footer = ref('')
 
 const getAbout = async() => {
   try {
-    const Response = await axios.get("http://localhost:8000/about")
+    const Response = await axios.get("https://winter-homework-backend.onrender.com/about")
     if (Response.data) {
       title.value = Response.data.title;
       body.value = Response.data.body;

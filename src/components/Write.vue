@@ -11,7 +11,7 @@ const userName = inject('userName')
 
 const submit = async () => {
   try {
-    const response = await axios.post("http://localhost:8000/articles/submit", {
+    const response = await axios.post("https://winter-homework-backend.onrender.com/articles/submit", {
         title: title.value,
         content: content.value,
         publisher: userName.value

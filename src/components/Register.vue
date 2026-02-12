@@ -14,7 +14,7 @@
     //TODO：实现后端的数据库调用判断
     const OnRegister=async()=>{
         try{
-            const response = await axios.get("http://localhost:8000/register",{
+            const response = await axios.get("https://winter-homework-backend.onrender.com/register",{
                 params:{
                     username:UserName.value,
                     password:Password.value
