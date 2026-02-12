@@ -33,14 +33,18 @@ onMounted(() => {
 
 <template>
   <div class="about">
-    <el-card style="width: 480px;background-color:var(--color-f-background-soft);">
+    <el-card style="width: 480px;background-color:var(--color-border);">
       <template #header>
         <div class="card-header">
           <span class="card-header">{{title}}</span>
         </div>
       </template>
       <p class="text-item">{{body}}</p>
-      <template #footer class="footer">{{ footer }}</template>
+      <template #footer>
+        <div class="footers">
+          {{ footer }}
+        </div>
+      </template>
     </el-card>
   </div>
 </template>
@@ -52,16 +56,25 @@ onMounted(() => {
     min-height: calc(100vh - 60px);
     flex-direction: column;
     align-items: center;
+    color: var(--color-text);
   }
 
   .card-header{
     font-size: xx-large;
     font-weight: bolder;
+    color: var(--color-text);
   }
   
-  .text-item,.footer{
+  .text-item{
     font-size: medium;
     font-weight: normal;
+    color: var(--color-text);
+  }
+
+  .footers{
+    font-size: medium;
+    font-weight: normal;
+    color: var(--color-text);
   }
   
 </style>

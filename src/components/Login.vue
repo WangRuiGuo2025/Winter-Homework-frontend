@@ -79,7 +79,7 @@
 
 <style scoped>
     .Login_Content{
-        background-color: var(--color-f-background-soft);
+        background-color: var(--color-border);
         padding: 25px;
         border-radius: 10px;
         display: flex;
@@ -91,6 +91,7 @@
         font-weight: bolder;
         align-items: center;
         justify-items: center;
+        color: var(--color-text);
     }
 
     .Login-UserName{
@@ -104,6 +105,7 @@
         text-align: right;
         margin-right: 10px;
         font-weight: bold;
+        color: var(--color-text);
     }
 
     .Login-Password{
@@ -116,15 +118,32 @@
         width: 250px;
     }
 
+    .UserName-input :deep(.el-input__wrapper) {
+        background-color: var(--color-fff-border-hover);
+    }
+    
+    .UserName-input :deep(.el-input__inner) {
+        color: var(--color-text);
+    }
+
     .Password-text{
         width: 80px;
         text-align: right;
         margin-right: 10px;
         font-weight: bold;
+        color: var(--color-text);
     }
 
     .Password-input{
         width: 250px;
+    }
+
+    .Password-input :deep(.el-input__wrapper) {
+        background-color: var(--color-fff-border-hover);
+    }
+
+    .Password-input :deep(.el-input__inner) {
+        color: var(--color-text);
     }
 
     .Register{

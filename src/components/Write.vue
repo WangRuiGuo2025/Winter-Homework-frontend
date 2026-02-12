@@ -40,15 +40,16 @@ const submit = async () => {
 
 <template>
   <div class="artical">
-    <el-text style="font-size: xx-large;font-weight: bolder;">发文章</el-text>
+    <el-text class="artical-text">发文章</el-text>
     <div class="title">
-      <el-text>标题：</el-text>
-      <el-input v-model="title" style="width: 75%;margin-bottom: 10px;" placeholder="请输入标题" />
+      <el-text class="title-text">标题：</el-text>
+      <el-input class="title-input" v-model="title" style="width: 75%;margin-bottom: 10px;" placeholder="请输入标题" />
     </div>
     <div class="content">
-      <el-text>标题：</el-text>
+      <el-text class="content-text">内容：</el-text> 
       <el-input
         v-model="content"
+        class="content-input"
         style="width: 75%"
         :rows="10"
         type="textarea"
@@ -68,7 +69,7 @@ const submit = async () => {
     align-items: center;
     justify-content: center;
     min-height: calc(100vh - 60px);
-    background-color: var(--color-f-background-soft);
+    background-color: var(--color-border);
   }
 
   .title,.content{
@@ -76,6 +77,31 @@ const submit = async () => {
     width: 100%;
     align-items: center;
     justify-content: center;
+  }
+  
+  .artical-text{
+    font-size: xx-large;
+    font-weight: bolder;
+    color: var(--color-text);
+  }
+  
+  .title-text,.content-text{
+    font-size: medium;
+    font-weight: normal;
+    color: var(--color-text);
+  }
+
+  .title-input :deep(.el-input__wrapper),
+  .content-input :deep(.el-input__wrapper) {
+    background-color: var(--color-fff-border-hover) !important;
+  }
+  .title-input :deep(.el-input__inner){
+    color: var(--color-text);
+  }
+
+  .content-input :deep(.el-textarea__inner) {
+    background-color: var(--color-fff-border-hover) !important;
+    color: var(--color-text)!important;
   }
 
 </style>

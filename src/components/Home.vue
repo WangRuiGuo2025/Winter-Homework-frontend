@@ -269,7 +269,7 @@ onMounted(() => {
         <span style="margin-left: 20px;">
             <el-button  
                 @click="handleLike"
-                style="color: RGB(233,164,58); padding: 0;"
+                style="color: RGB(233,164,58); padding: 0;background: var(--color-f-border-hover);"
             >
                 <span :style="likeCountStyle">点赞 ({{ currentArticle.like_count || 0 }})</span>
             </el-button>
@@ -280,11 +280,11 @@ onMounted(() => {
             
             <div v-if="Status === 'success'" style="margin-bottom: 20px;">
                 <el-input
-                    v-model="commentContent"
-                    type="textarea"
-                    placeholder="请输入评论内容..."
-                    style="margin-bottom: 10px; background: var(--color-background-soft); color: var(--color-f-background-soft);"
-                    rows="3"
+                class="comment-input"
+                v-model="commentContent"
+                type="textarea"
+                placeholder="请输入评论内容..."
+                rows="3"
                 />
                 <el-button 
                     type="primary" 
@@ -392,5 +392,27 @@ onMounted(() => {
         line-height: 1.8;
         white-space: pre-wrap;
         word-wrap: break-word;
+    }
+
+    .comment-input :deep(.el-textarea__inner) {
+        color: var(--vt-c-white-mute);
+        margin-bottom: 10px;
+        background-color: var(--color-fff-background-soft);
+    }
+
+    :deep(.el-pagination.is-background .btn-next.is-disabled),
+    :deep(.el-pagination.is-background .btn-next:disabled),
+    :deep(.el-pagination.is-background .btn-prev.is-disabled),
+    :deep(.el-pagination.is-background .btn-prev:disabled),
+    :deep(.el-pagination.is-background .el-pager li.is-disabled),
+    :deep(.el-pagination.is-background .el-pager li:disabled) {
+        color: var(--color-text-light) !important;
+        background-color: var(--color-f-border-hover) !important;
+    }
+
+    :deep(.el-pagination .el-pager li.is-active) {
+        background-color: #e9a43a !important;
+        color: var(--vt-c-white-mute) !important;
+        border-radius: 4px !important;
     }
 </style>
