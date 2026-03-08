@@ -106,6 +106,8 @@
     activeIndex.value = 'Home'
     localStorage.removeItem('token')
     localStorage.removeItem('userInfo')
+    localStorage.removeItem('loginStatus')
+    localStorage.removeItem('userName')
     sessionStorage.clear()
     window.location.reload()
   }
@@ -126,6 +128,14 @@
   };
 
   onMounted(() => {
+    // 从localStorage恢复登录状态
+    const savedStatus = localStorage.getItem('loginStatus')
+    const savedUserName = localStorage.getItem('userName')
+    
+    if (savedStatus === 'success' && savedUserName) {
+      Status.value = 'success'
+      userName.value = savedUserName
+    }
     openFullScreen()
     setTimeout(() => {
       Notification()

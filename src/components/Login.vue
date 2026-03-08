@@ -27,6 +27,11 @@
 
             // 这里必须调用父组件提供的方法来更新 userName（AI帮助）
             updateUserName(UserName.value)
+
+            // 保存登录状态到localStorage
+            localStorage.setItem('loginStatus', 'success')
+            localStorage.setItem('userName', UserName.value)
+            
             toHome()
             ElMessage({
                 message: '登录成功',
